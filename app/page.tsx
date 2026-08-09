@@ -8,6 +8,7 @@ import ContentExample from "@/components/sections/ContentExample";
 import Process from "@/components/sections/Process";
 import Pricing from "@/components/sections/Pricing";
 import FinalCta from "@/components/sections/FinalCta";
+import Footer from "@/components/sections/Footer";
 import { PlanSelectionProvider } from "@/components/PlanSelectionContext";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <Pricing />
         <FinalCta />
       </PlanSelectionProvider>
+      <Footer />
     </main>
   );
 }
