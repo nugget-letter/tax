@@ -2,6 +2,7 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import SocialProof from "@/components/sections/SocialProof";
+import WhyItWorks from "@/components/sections/WhyItWorks";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <SocialProof />
+      <WhyItWorks />
     </main>
   );
 }
