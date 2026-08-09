@@ -5,6 +5,7 @@ import SocialProof from "@/components/sections/SocialProof";
 import WhyItWorks from "@/components/sections/WhyItWorks";
 import HowItWorks from "@/components/sections/HowItWorks";
 import ContentExample from "@/components/sections/ContentExample";
+import Process from "@/components/sections/Process";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <WhyItWorks />
       <HowItWorks />
       <ContentExample />
+      <Process />
     </main>
   );
 }
