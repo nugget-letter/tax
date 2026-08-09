@@ -164,7 +164,7 @@ export default function FinalCta() {
             신청이 접수되었습니다. 빠르게 연락드리겠습니다!
           </p>
         )}
-        {status === "error" && !fieldErrors && (
+        {status === "error" && !fieldErrors?.name && !fieldErrors?.phone && !fieldErrors?.email && (
           <p className="text-center text-sm font-semibold text-red-600">
             전송에 실패했습니다. won@nugget.im으로 직접 문의해주세요.
           </p>
