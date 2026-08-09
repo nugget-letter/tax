@@ -6,6 +6,8 @@ import WhyItWorks from "@/components/sections/WhyItWorks";
 import HowItWorks from "@/components/sections/HowItWorks";
 import ContentExample from "@/components/sections/ContentExample";
 import Process from "@/components/sections/Process";
+import Pricing from "@/components/sections/Pricing";
+import { PlanSelectionProvider } from "@/components/PlanSelectionContext";
 
 export default function Home() {
   return (
@@ -18,6 +20,9 @@ export default function Home() {
       <HowItWorks />
       <ContentExample />
       <Process />
+      <PlanSelectionProvider>
+        <Pricing />
+      </PlanSelectionProvider>
     </main>
   );
 }
