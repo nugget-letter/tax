@@ -21,7 +21,7 @@ const FEATURES = [
 
 export default function HowItWorks() {
   return (
-    <SectionContainer className="bg-white text-navy-950">
+    <SectionContainer className="bg-gray-50 text-navy-950">
       <h2 className="text-center text-3xl font-extrabold md:text-4xl">
         세무사님도 너겟과 함께라면
         <br />

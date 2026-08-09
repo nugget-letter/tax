@@ -47,7 +47,7 @@ export default function Pricing() {
   }
 
   return (
-    <SectionContainer id="pricing" className="bg-white text-navy-950">
+    <SectionContainer id="pricing" className="bg-gray-50 text-navy-950">
       <h2 className="text-center text-3xl font-extrabold md:text-4xl">요금제 소개</h2>
       <p className="mt-3 text-center text-gray-500">
         세무사님께 적합한 플랜을 선택하세요

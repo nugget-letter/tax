@@ -3,8 +3,10 @@
 import { useState, type FormEvent } from "react";
 import SectionContainer from "@/components/ui/SectionContainer";
 import { usePlanSelection } from "@/components/PlanSelectionContext";
+import type { ContactFormInput } from "@/lib/validation";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
+type FieldErrors = Record<string, string[]>;
 
 const PLAN_OPTIONS = [
   { value: "none", label: "선택 안 함" },
@@ -16,17 +18,20 @@ const PLAN_OPTIONS = [
 export default function FinalCta() {
   const { selectedPlan } = usePlanSelection();
   const [status, setStatus] = useState<SubmitState>("idle");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
+    setFieldErrors(null);
 
     const form = event.currentTarget;
-    const payload = {
+    const payload: ContactFormInput = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      plan: (form.elements.namedItem("plan") as HTMLSelectElement).value,
+      plan: (form.elements.namedItem("plan") as HTMLSelectElement)
+        .value as ContactFormInput["plan"],
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
     };
 
@@ -37,7 +42,13 @@ export default function FinalCta() {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("request_failed");
+      if (!response.ok) {
+        const body = await response.json().catch(() => null);
+        if (body?.fieldErrors) {
+          setFieldErrors(body.fieldErrors);
+        }
+        throw new Error("request_failed");
+      }
       setStatus("success");
       form.reset();
     } catch {
@@ -69,6 +80,11 @@ export default function FinalCta() {
             required
             className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2"
           />
+          {fieldErrors?.name && (
+            <p className="mt-1 text-xs font-semibold text-red-600">
+              {fieldErrors.name[0]}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="phone" className="text-sm font-semibold">
@@ -78,9 +94,15 @@ export default function FinalCta() {
             id="phone"
             name="phone"
             required
+            minLength={9}
             placeholder="010-0000-0000"
             className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2"
           />
+          {fieldErrors?.phone && (
+            <p className="mt-1 text-xs font-semibold text-red-600">
+              {fieldErrors.phone[0]}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="email" className="text-sm font-semibold">
@@ -93,6 +115,11 @@ export default function FinalCta() {
             required
             className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2"
           />
+          {fieldErrors?.email && (
+            <p className="mt-1 text-xs font-semibold text-red-600">
+              {fieldErrors.email[0]}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="plan" className="text-sm font-semibold">
@@ -137,7 +164,7 @@ export default function FinalCta() {
             신청이 접수되었습니다. 빠르게 연락드리겠습니다!
           </p>
         )}
-        {status === "error" && (
+        {status === "error" && !fieldErrors && (
           <p className="text-center text-sm font-semibold text-red-600">
             전송에 실패했습니다. won@nugget.im으로 직접 문의해주세요.
           </p>

@@ -13,20 +13,22 @@ import { PlanSelectionProvider } from "@/components/PlanSelectionContext";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <Hero />
-      <Problem />
-      <SocialProof />
-      <WhyItWorks />
-      <HowItWorks />
-      <ContentExample />
-      <Process />
-      <PlanSelectionProvider>
-        <Pricing />
-        <FinalCta />
-      </PlanSelectionProvider>
+      <main>
+        <Hero />
+        <Problem />
+        <SocialProof />
+        <WhyItWorks />
+        <HowItWorks />
+        <ContentExample />
+        <Process />
+        <PlanSelectionProvider>
+          <Pricing />
+          <FinalCta />
+        </PlanSelectionProvider>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

@@ -36,5 +36,9 @@ export async function sendContactNotification(data: ContactFormInput) {
     ].join("\n"),
   });
 
+  if (result.error) {
+    throw new Error(result.error.message);
+  }
+
   return { skipped: false as const, id: result.data?.id };
 }

@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   title: "너겟 세무사 | 고객과의 접점을 늘리는 브랜드메시지 서비스",
   description:
     "세무사님 대신 너겟이 매달 카카오톡 브랜드메시지 콘텐츠를 만들어 보내드립니다. 지금 무료 샘플을 받아보세요.",
+  openGraph: {
+    title: "너겟 세무사 | 고객과의 접점을 늘리는 브랜드메시지 서비스",
+    description:
+      "세무사님 대신 너겟이 매달 카카오톡 브랜드메시지 콘텐츠를 만들어 보내드립니다. 지금 무료 샘플을 받아보세요.",
+    locale: "ko_KR",
+  },
 };
 
 export default function RootLayout({

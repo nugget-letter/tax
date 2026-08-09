@@ -26,9 +26,9 @@ export default function PhoneMockup({
         <div className="p-4">
           <h4 className="font-bold text-navy-950">{title}</h4>
           <p className="mt-2 line-clamp-4 text-sm text-gray-500">{body}</p>
-          <button className="mt-4 w-full rounded-lg bg-brand-orange py-2 text-sm font-bold text-white">
+          <span className="mt-4 block w-full rounded-lg bg-brand-orange py-2 text-center text-sm font-bold text-white">
             {ctaLabel}
-          </button>
+          </span>
         </div>
       </div>
     </div>
