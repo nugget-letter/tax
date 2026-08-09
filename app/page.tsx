@@ -1,3 +1,11 @@
+import Header from "@/components/sections/Header";
+import Hero from "@/components/sections/Hero";
+
 export default function Home() {
-  return <main className="p-10 text-center">Coming soon</main>;
+  return (
+    <main>
+      <Header />
+      <Hero />
+    </main>
+  );
 }
